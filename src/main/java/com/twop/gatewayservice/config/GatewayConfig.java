@@ -3,9 +3,11 @@ package com.twop.gatewayservice.config;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@EnableHystrix
 @Configuration
 public class GatewayConfig {
 
@@ -18,8 +20,8 @@ public class GatewayConfig {
                             .uri("http://httpbin.org:80"))
 
                 .route(p-> p.path("/greet")
-                            .filters(f->f.addRequestHeader("service" , "rating"))
-                           .uri("http://localhost:8084")
+                            .filters(f->f.addRequestHeader("service" , "k8s-demo"))
+                           .uri("http://k8s-demo:8084")
                 ).build();
 
     }

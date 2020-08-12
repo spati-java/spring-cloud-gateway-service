@@ -20,7 +20,9 @@ public class GatewayConfig {
                             .uri("http://httpbin.org:80"))
 
                 .route(p-> p.path("/greet")
-                            .filters(f->f.addRequestHeader("service" , "k8s-demo"))
+                            .filters(f->f.addRequestHeader("service" , "k8s-demo")
+                            .hystrix(config -> config.setName("k8s-demo-service"))
+                            )
                            .uri("http://k8s-demo:8084")
                 ).build();
 

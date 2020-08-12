@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: gateway-service
-        image: spati/gateway-service:hystrix
+        image: spati/gatway-service:hystrixV3
         ports:
         - containerPort: 9099

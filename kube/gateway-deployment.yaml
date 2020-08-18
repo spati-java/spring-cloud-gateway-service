@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway-deployment
+  name: movie-gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gateway-service
+      app: movie-gateway
   template:
     metadata:
       labels:
-        app: gateway-service
+        app: movie-gateway
     spec:
       containers:
-      - name: gateway-service
-        image: spati/gatway-service:hystrixV3
+      - name: movie-gateway
+        image: spati/movie-gateway:path4
         ports:
         - containerPort: 9099

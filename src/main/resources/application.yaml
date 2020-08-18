@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: movie-catalog-service
+        uri: http://movie-catalog-service:8081
+        predicates:
+        - Path=/catalog/**
+  application:
+    name: movie-gateway
+server:
+  port: 9099
